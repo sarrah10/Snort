@@ -1,10 +1,10 @@
-# 🐷 Snort – First Interaction & Operation Modes
+# Snort – First Interaction & Operation Modes
 
 This lab introduces **Snort**, an open-source Network Intrusion Detection/Prevention System (IDS/IPS). We explore its installation, configuration validation, and different operation modes including **Sniffer**, **Logger**, **IDS/IPS**, and **PCAP Investigation**.
 
 ---
 
-## ✅ Verifying Snort Installation
+## Verifying Snort Installation
 
 To confirm Snort is installed and check its version:
 
@@ -19,7 +19,7 @@ This displays:
 
 ---
 
-## 🛠️ Testing Snort Configuration
+## Testing Snort Configuration
 
 Before running Snort, always validate the configuration file:
 
@@ -42,7 +42,7 @@ Snort successfully validated the configuration!
 
 ---
 
-# 🕵️ Operation Mode 1: Sniffer Mode
+# Operation Mode 1: Sniffer Mode
 
 Snort can sniff live traffic like `tcpdump`.
 
@@ -70,7 +70,7 @@ sudo snort -X
 
 ---
 
-# 📝 Operation Mode 2: Packet Logger Mode
+# Operation Mode 2: Packet Logger Mode
 
 Snort can log captured packets to files.
 
@@ -114,7 +114,7 @@ sudo snort -dvr snort.log.xxxxx -n 10
 
 ---
 
-## 🔐 Logfile Ownership Issue
+## Logfile Ownership Issue
 
 Since Snort runs with `sudo`, logs are owned by **root**.
 
@@ -130,7 +130,7 @@ sudo chown ubuntu:ubuntu snort.log.xxxxx
 
 ---
 
-# 🚨 Operation Mode 3: IDS/IPS Mode
+# Operation Mode 3: IDS/IPS Mode
 
 Snort detects threats using **rules**.
 
@@ -159,7 +159,7 @@ sudo kill -9 <PID>
 
 ---
 
-## 📢 Alert Modes
+## Alert Modes
 
 | Mode | Description |
 |------|-------------|
@@ -181,7 +181,7 @@ sudo snort -c /etc/snort/snort.conf -A none
 
 ---
 
-# 📂 Operation Mode 4: PCAP Investigation
+# Operation Mode 4: PCAP Investigation
 
 Snort can analyze `.pcap` files.
 
@@ -201,7 +201,7 @@ sudo snort -c /etc/snort/snort.conf -q --pcap-list="icmp-test.pcap http2.pcap" -
 
 ---
 
-# 🧩 Snort Rule Structure
+# Snort Rule Structure
 
 Basic rule format:
 
@@ -217,7 +217,7 @@ alert icmp any any <> any any (msg:"ICMP Packet Found"; sid:1000001; rev:1;)
 
 ---
 
-## 🔹 Rule Components
+## Rule Components
 
 ### Actions
 | Action | Meaning |
@@ -232,7 +232,7 @@ Snort2 supports: `IP`, `TCP`, `UDP`, `ICMP`
 
 ---
 
-## 🌐 IP & Port Filtering Examples
+## IP & Port Filtering Examples
 
 ```snort
 alert icmp 192.168.1.0/24 any <> any any (msg:"ICMP Found"; sid:1000002; rev:1;)
@@ -243,7 +243,7 @@ alert tcp any any <> any 1:1024 (msg:"System Ports"; sid:1000005; rev:1;)
 
 ---
 
-## 🔍 Payload Detection Options
+## Payload Detection Options
 
 ```snort
 content:"GET";
@@ -260,7 +260,7 @@ alert tcp any any <> any 80 (msg:"HTTP GET Found"; content:"GET"; nocase; sid:10
 
 ---
 
-## 🧠 Non-Payload Options
+## Non-Payload Options
 
 ```snort
 flags:S;
@@ -271,7 +271,7 @@ id:123456;
 
 ---
 
-# ⚙️ Important Files
+# Important Files
 
 | File | Purpose |
 |------|---------|
@@ -280,7 +280,7 @@ id:123456;
 
 ---
 
-# 🧠 Snort Processing Flow
+# Snort Processing Flow
 
 1. **Packet Decoder** – Captures packets  
 2. **Preprocessors** – Normalize traffic  
@@ -290,7 +290,7 @@ id:123456;
 
 ---
 
-## 🎯 Key Takeaways
+## Key Takeaways
 
 ✔ Snort can sniff, log, detect, and prevent attacks  
 ✔ Logs require root access  
